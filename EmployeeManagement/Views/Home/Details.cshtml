@@ -5,6 +5,7 @@
 @{ 
 
     ViewBag.Title = "DetailsPage";
+    var photoPath = "~/images/"+(Model.employee.PhotoPath?? "Emp_Img.png");
 
 }
 
@@ -16,8 +17,8 @@
             </div>
 
             <div class="card-body text-center">
-                <img class="card-img-top" src="~/images/Emp_Img.png" />
-
+                <img class="card-img-top" src="@photoPath" asp-append-version="true"/>
+                 
                 <h4> Employee ID :@Model.employee.Id</h4>
                 <h4>Email:@Model.employee.Email</h4>
                 <h4>Department:@Model.employee.Department</h4>
@@ -25,7 +26,7 @@
 
             <div class="card-footer text-center">
                 <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
-                <a href="#" class="btn btn-primary">Edit</a>
+                <a class="btn btn-primary" asp-action="edit" asp-controller="home" asp-route-id="@Model.employee.Id">Edit</a>
                 <a href="#" class="btn btn-danger">Delete</a>
             </div>
 
